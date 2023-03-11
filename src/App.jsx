@@ -1,12 +1,14 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+import "./App.css";
+
+import Navigation from "./components/molecules/Navigation";
 
 function App() {
   return (
-    <div>
-      Test 123
-    </div>
-  )
+      <div>
+        <Navigation />
+      </div>
+  );
 }
 
-export default App
+export default App;
