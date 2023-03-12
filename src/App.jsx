@@ -1,12 +1,12 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+import "./App.css";
+
+import Combined from "./components/organism/Combined";
 
 function App() {
   return (
-    <div>
-      Test 123
-    </div>
-  )
+     <Combined />
+  );
 }
 
-export default App
+export default App;
