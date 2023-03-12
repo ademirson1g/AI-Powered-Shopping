@@ -1,12 +1,12 @@
 import React from "react";
 
+import '../../animation.css'
 import HeaderText from "../atoms/HeaderText";
-import Homepage from "../molecules/Homepage";
 import Navigation from "../molecules/Navigation";
 
 const Combined = () => {
   return (
-    <div>
+    <div className="animated">
       <Navigation />
       <HeaderText />
     </div>

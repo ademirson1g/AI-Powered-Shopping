@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa"
+import React, { useState } from "react";
+import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa";
 
-import JoinUsButton from "../atoms/JoinUsButton"
+import JoinUsButton from "../atoms/JoinUsButton";
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <nav>
@@ -17,8 +17,8 @@ const Navigation = () => {
           <div className="flex-shrink-0">
             <div className="hidden md:block cursor-pointer font-bold">
               <span className="text-white mr-6">Home</span>
-              <span className="text-white mr-6">About Us</span>
-              <span className="text-white mr-6">Contact Us</span>
+              <span className="text-white mr-6">About</span>
+              <span className="text-white mr-6">How to start?</span>
             </div>
           </div>
           <div className="text-white text-4xl font-bold mr-6 cursor-pointer">
@@ -51,7 +51,7 @@ const Navigation = () => {
         <hr />
       </div>
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 sm:px-3">
+        <div className="px-2 pt-2 pb-3 sm:px-3 mt-4">
           <a
             href="#"
             className="block px-3 py-2 rounded-md text-base font-medium 
@@ -66,7 +66,7 @@ const Navigation = () => {
                     text-white bg-gray-800 focus:outline-none focus:text-white focus:bg-gray-700 
                       transition duration-150 ease-in-out"
           >
-            About Us
+            About
           </a>
           <a
             href="#"
@@ -74,17 +74,20 @@ const Navigation = () => {
                     text-white bg-gray-800 focus:outline-none focus:text-white focus:bg-gray-700 
                       transition duration-150 ease-in-out"
           >
-            Contact Us
+            How to start?
           </a>
-          <div className="flex items-center justify-end mt-4">
+          <div className="flex items-center justify-end mt-4 mr-4">
             <FaUser className="text-white mr-6" size={20} />
             <FaSearch className="text-white mr-6" size={20} />
             <JoinUsButton />
           </div>
+          <div className="line bg-white mt-4 w-full">
+            <hr />
+          </div>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
