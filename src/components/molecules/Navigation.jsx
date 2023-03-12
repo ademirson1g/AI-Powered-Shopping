@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa";
+import React, { useState } from "react"
+import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa"
 
-import JoinUsButton from "../atoms/JoinUsButton";
+import JoinUsButton from "../atoms/JoinUsButton"
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <nav>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <div className="hidden md:block cursor-pointer">
+            <div className="hidden md:block cursor-pointer font-bold">
               <span className="text-white mr-6">Home</span>
               <span className="text-white mr-6">About Us</span>
               <span className="text-white mr-6">Contact Us</span>
             </div>
           </div>
-          <div className="text-white font-bold mr-6 cursor-pointer">
-            <span>SmartSpend</span>
+          <div className="text-white text-4xl font-bold mr-6 cursor-pointer">
+            <span>Smart Spend</span>
           </div>
           <div className="hidden md:block cursor-pointer">
             <div className="flex items-center">
@@ -76,10 +76,15 @@ const Navigation = () => {
           >
             Contact Us
           </a>
+          <div className="flex items-center justify-end mt-4">
+            <FaUser className="text-white mr-6" size={20} />
+            <FaSearch className="text-white mr-6" size={20} />
+            <JoinUsButton />
+          </div>
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
 
-import Navigation from "./components/molecules/Navigation";
+import Combined from "./components/organism/Combined";
 
 function App() {
   return (
-      <div>
-        <Navigation />
-      </div>
+     <Combined />
   );
 }
 
