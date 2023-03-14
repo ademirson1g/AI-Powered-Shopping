@@ -101,7 +101,6 @@ const Homepage = () => {
           <img src={logo} className="ml-28 rounded-full w-32"/>
           <img src={logo} className="ml-28 rounded-full w-32"/>
           <img src={logo} className="ml-28 rounded-full w-32"/>
-
         </div>
       </div>
     </div>
