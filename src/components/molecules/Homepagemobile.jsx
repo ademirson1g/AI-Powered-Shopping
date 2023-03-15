@@ -1,15 +1,15 @@
-import React from "react";
-import { FcAndroidOs } from "react-icons/fc";
+import React from "react"
+import { FcAndroidOs } from "react-icons/fc"
 
-import TransparentButton from "../atoms/TransparentButton";
-import DownloadButton from "../atoms/DownloadButton";
-import { Card, CardImg } from "reactstrap";
+import TransparentButton from "../atoms/TransparentButton"
+import DownloadButton from "../atoms/DownloadButton"
+import { Card, CardImg } from "reactstrap"
 
 const Homepagemobile = () => {
   const styles = {
     backgroundColor: "white",
     italic: { fontStyle: "italic" },
-  };
+  }
   return (
     <div className="md:hidden bg-white absolute top-80 left-0 w-full p-4">
       <TransparentButton>Best Budget Plan</TransparentButton>
@@ -46,7 +46,7 @@ const Homepagemobile = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Homepagemobile;
+export default Homepagemobile

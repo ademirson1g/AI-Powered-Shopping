@@ -1,12 +1,12 @@
-import React from "react";
-import { Card, CardImg } from "reactstrap";
-import { FcAndroidOs } from "react-icons/fc";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import React from "react"
+import { Card, CardImg } from "reactstrap"
+import { FcAndroidOs } from "react-icons/fc"
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
 
-import TransparentButton from "../atoms/TransparentButton";
-import DownloadButton from "../atoms/DownloadButton";
-import Homepagemobile from "./Homepagemobile";
-import logo from "../../assets/images/logo.png";
+import TransparentButton from "../atoms/TransparentButton"
+import DownloadButton from "../atoms/DownloadButton"
+import Homepagemobile from "./Homepagemobile"
+import logo from "../../assets/images/logo.png"
 
 const Homepage = () => {
   const styles = {
@@ -21,7 +21,7 @@ const Homepage = () => {
       right: 250,
       height: 200,
     },
-  };
+  }
 
   return (
     <div className="relative">
@@ -104,7 +104,7 @@ const Homepage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Homepage;
+export default Homepage

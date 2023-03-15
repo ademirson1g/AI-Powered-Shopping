@@ -1,5 +1,5 @@
-import React from "react";
-import { AiOutlineArrowRight } from "react-icons/ai";
+import React from "react"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 const DownloadButton = () => {
   return (
@@ -10,7 +10,7 @@ const DownloadButton = () => {
       <p className="bg-[#EE5152] mb-2"> Download Our App </p>
       <AiOutlineArrowRight className="ml-3 bg-[#EE5152]" size={25} />
     </button>
-  );
-};
+  )
+}
 
-export default DownloadButton;
+export default DownloadButton

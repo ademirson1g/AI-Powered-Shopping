@@ -1,7 +1,7 @@
-import React from "react";
-import { FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
+import React from "react"
+import { FaCreditCard, FaMoneyBillWave } from "react-icons/fa"
 
-import Homepage from "../molecules/Homepage";
+import Homepage from "../molecules/Homepage"
 
 const HeaderText = () => {
   return (
@@ -23,7 +23,7 @@ const HeaderText = () => {
         <Homepage />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeaderText;
+export default HeaderText

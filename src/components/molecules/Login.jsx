@@ -1,7 +1,11 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
+
 import Navigation from "./Navigation"
 import TransparentButton from "../atoms/TransparentButton"
+import InputField from "../atoms/InputField"
+import RegisterIcons from "../atoms/RegisterIcons"
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -39,61 +43,43 @@ const LoginPage = () => {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-white"
-                >
-                  Email address
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-white"
-                >
-                  Password
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+              <InputField
+                label="Email address"
+                name="email"
+                type="email"
+                required={true}
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <InputField
+                label="Password"
+                name="password"
+                type="password"
+                required={true}
+                value={formData.password}
+                onChange={handleChange}
+              />
               <div className="text-center text-white">
                 <TransparentButton>Log In</TransparentButton>
               </div>
-              <div className="text-white mb-4">
+              <div className="text-white text-center font-bold">
+                <h1>Or Login with</h1>
+                <RegisterIcons />
+              </div>
+              <div className="text-white text-center mb-4">
                 <h1>
                   Don't have an account?
-                  <a href="/register">
+                  <Link to="/register">
                     <strong className="cursor-pointer ml-1 hover:text-white">
                       Sign Up
                     </strong>
-                  </a>
+                  </Link>
                 </h1>
               </div>
-              <div className="text-center text-white">
-                <h1>Forgot your password?</h1>
+              <div className="text-center text-white ">
+                <Link to="/forgot_password">
+                  <h1 className="hover:text-white">Forgot your password?</h1>
+                </Link>
               </div>
             </form>
           </div>
