@@ -1,16 +1,14 @@
-import React from "react";
+import React from "react"
 
-import HeaderText from "../atoms/HeaderText";
-import Homepage from "../molecules/Homepage";
-import Navigation from "../molecules/Navigation";
+import AppRoutes from "../routes/routes"
 
 const Combined = () => {
   return (
     <div>
-      <Navigation />
-      <HeaderText />
+      <AppRoutes />
     </div>
-  );
-};
+  )
+}
 
-export default Combined;
+
+export default Combined
