@@ -3,8 +3,10 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 
 import HeaderText from "../atoms/HeaderText"
 import TransparentButton from "../atoms/TransparentButton"
+import About from "../molecules/About"
 import Dashboard from "../molecules/Dashboard"
 import ForgotPassword from "../molecules/ForgotPassword"
+import GetStarted from "../molecules/GetStarted"
 import Homepage from "../molecules/Homepage"
 import Login from "../molecules/Login"
 import Navigation from "../molecules/Navigation"
@@ -20,6 +22,8 @@ const AppRoutes = () => {
             <Fragment>
               <Navigation />
               <HeaderText />
+              <About />
+              <GetStarted />
             </Fragment>
           }
         />
@@ -31,7 +35,7 @@ const AppRoutes = () => {
         <Route
           path="*"
           element={
-            <div class="h-screen w-screen flex items-center">
+            <div class="h-screen w-screen flex items-center bg-black">
               <div class="container flex flex-col md:flex-row items-center justify-center px-5 text-white">
                 <div class="max-w-md">
                   <div class="text-5xl font-dark font-bold">404</div>

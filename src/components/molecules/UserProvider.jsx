@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AiFillDownCircle } from "react-icons/ai"
-import { FiSettings, FiUser } from "react-icons/fi"
 import { BiLogOut } from "react-icons/bi"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
@@ -10,19 +9,21 @@ import JoinUsButton from "../atoms/JoinUsButton"
 const UserProvider = () => {
   const [user, setUser] = useState(null)
   const [showLogoutDropdown, setShowLogoutDropdown] = useState(false)
-  const [isLoading, setIsLoading] = useState(true) // add loading state
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setUser({
-          name: user.displayName,
-          photoUrl: user.photoURL,
-        })
+        if (!user.emailVerified) {
+        } else {
+          setUser({
+            name: user.displayName,
+            photoUrl: user.photoURL,
+            emailVerified: user.emailVerified,
+          })
+        }
       } else {
         setUser(null)
       }
-      setIsLoading(false)
     })
     return unsubscribe
   }, [])
@@ -37,9 +38,7 @@ const UserProvider = () => {
 
   return (
     <div className="relative">
-      {isLoading ? ( 
-        <div className="text-white">Loading...</div>
-      ) : user ? (
+      { user ? (
         <div className="flex items-center">
           <button className="flex items-center" onClick={toggleLogoutDropdown}>
             <img
@@ -51,25 +50,7 @@ const UserProvider = () => {
             <AiFillDownCircle color="white" />
           </button>
           {showLogoutDropdown && (
-            <div className="absolute right-0 top-10 bg-white rounded-lg shadow-md py-2">
-              <Link
-                to="/dashboard"
-                className="block text-black text-left px-4 py-2 bg-white"
-              >
-                <div className="flex bg-white">
-                  <FiUser className="inline-block mr-2 bg-white mt-1" />
-                  Dashboard
-                </div>
-              </Link>
-              <Link
-                to="/settings"
-                className="block text-black text-left px-4 py-2 bg-white"
-              >
-                <div className="bg-white">
-                  <FiSettings className="inline-block mr-2 bg-white" />
-                  Settings
-                </div>
-              </Link>
+            <div className="absolute right-0 top-10 bg-white rounded-lg shadow-md py-2 z-10">
               <Link to="/">
                 <button
                   onClick={handleLogout}

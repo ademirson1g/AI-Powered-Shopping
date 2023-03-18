@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 
+import { auth } from "../firebaseConfig/firebaseConfig"
 import Navigation from "./Navigation"
 import TransparentButton from "../atoms/TransparentButton"
 import RegisterIcons from "../atoms/RegisterIcons"
@@ -28,13 +29,25 @@ const RegistrationPage = () => {
       return
     }
     try {
-      await axios.post("/api/register", {
-        firstName,
-        lastName,
+      const { user } = await auth.createUserWithEmailAndPassword(
         email,
-        password,
+        password
+      )
+      await user.updateProfile({
+        displayName: `${firstName} ${lastName}`,
       })
-      alert("Registration successful")
+      await user.sendEmailVerification()
+      alert(
+        "Registration successful. Please check your email for a verification link."
+      )
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      })
+      window.location.href = '/login' // redirect to login page
     } catch (error) {
       alert("Error registering")
     }
@@ -43,14 +56,13 @@ const RegistrationPage = () => {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h1 className="mt-6 text-center text-3xl font-extrabold text-white">
+      <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#5F4B8BFF]">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md ">
+          <h1 className="mt-6 text-center text-3xl font-extrabold text-white ">
             Register an account
           </h1>
         </div>
-
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md ">
           <div className="py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <InputField
@@ -96,32 +108,32 @@ const RegistrationPage = () => {
               <div className="text-center text-white">
                 <TransparentButton> Register Now </TransparentButton>
               </div>
-              <div className="text-white flex justify-between mb-4">
+              <div className="text-white flex justify-between ">
                 <h1>
                   Already a user?
-                  <Link to ="/login">
+                  <Link to="/login">
                     <strong className="cursor-pointer ml-1 hover:text-white">
                       Log In
                     </strong>
                   </Link>
                 </h1>
-                <Link to ="/forgot_password">
-                <h1 className="cursor-pointer font-bold hover:text-white">
-                  Forgot your password?
-                </h1>
+                <Link to="/forgot_password">
+                  <h1 className="cursor-pointer font-bold hover:text-white">
+                    Forgot your password?
+                  </h1>
                 </Link>
               </div>
             </form>
             <div className="mt-6">
               <div className="relative">
                 <div
-                  className="absolute inset-0 flex items-center"
+                  className="absolute inset-0 mt-8 flex items-center"
                   aria-hidden="true"
                 >
                   <div className="w-full border-t border-gray-300" />
                 </div>
-                <div className="relative flex justify-center text-base font-bold">
-                  <span className="px-2 text-white">Or register with</span>
+                <div className=" flex justify-center text-base font-bold">
+                  <span className="text-white">Or register with</span>
                 </div>
               </div>
               <RegisterIcons />

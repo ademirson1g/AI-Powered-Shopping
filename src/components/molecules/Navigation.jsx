@@ -1,22 +1,26 @@
-import React, { useState } from "react"
-import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa"
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-import UserProvider from "./UserProvider"
+import UserProvider from "./UserProvider";
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
+
+  const styles = {
+    backgroundHexImage: { backgroundColor: "#41A5B2", height:"100%"},
+  };
 
   return (
-    <nav>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <nav style={styles.backgroundHexImage}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <div className="hidden md:block cursor-pointer font-bold">
+            <div className="hidden md:block cursor-pointer font-bold mt-2">
               <Link to="/">
                 <span className="text-white mr-6">Home</span>
               </Link>
@@ -24,12 +28,12 @@ const Navigation = () => {
               <span className="text-white mr-6">How to start?</span>
             </div>
           </div>
-          <div className="text-white text-4xl font-bold mr-6 cursor-pointer">
+          <div className="text-white text-4xl font-bold mr-6 cursor-pointer mt-2">
             <Link to="/">
               <span className="hover:text-white">Budget Wizzard</span>
             </Link>
           </div>
-          <div className="hidden md:block cursor-pointer">
+          <div className="hidden md:block cursor-pointer mt-3">
             <div className="flex items-center">
               <FaUser className="text-white mr-6" size={20} />
               <FaSearch className="text-white mr-6" size={20} />
@@ -41,7 +45,7 @@ const Navigation = () => {
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md 
                       text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white 
-                        transition duration-150 ease-in-out"
+                        transition duration-150 ease-in-out mt-3"
             >
               {isOpen ? (
                 <FaTimes className="block h-6 w-6" aria-hidden="true" />
@@ -52,6 +56,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
+
       <div className="line bg-white mt-4 w-full">
         <hr />
       </div>
@@ -88,16 +93,10 @@ const Navigation = () => {
               <UserProvider />
             </Link>
           </div>
-          <div
-            className="line bg-white mt-4 w-full"
-            style={{ animation: "expandLine 0.5s ease-in-out forwards" }}
-          >
-            <hr />
-          </div>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

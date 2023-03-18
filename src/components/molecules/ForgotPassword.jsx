@@ -21,7 +21,7 @@ const ForgotPassword = () => {
   return (
     <>
       <Navigation />
-      <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#5F4B8BFF]">
         <div className="max-w-md w-full space-y-8">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
             Forgot your password?

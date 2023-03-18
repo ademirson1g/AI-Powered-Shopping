@@ -5,12 +5,13 @@ import Homepage from "../molecules/Homepage"
 
 const HeaderText = () => {
   return (
-    <div className="text-center text-white mt-5">
-      <h1 className="text-4xl md:text-8xl lg:text-9xl font-berkshire leading-tight typewriter">
+    <div className="text-center text-white bg-[#5CB8BD]">
+      <h1 className="text-4xl md:text-8xl lg:text-9xl font-berkshire leading-tight">
+      <br />
         Save Easily <br />
         Anywhere
       </h1>
-      <div className="flex flex-col md:flex-row justify-between items-center md:mt-12 mt-2">
+      <div className="flex flex-col md:flex-row justify-between items-center md:mt-12">
         <p className="flex font-bold items-center text-base md:text-lg text-left md:ml-28 ">
           <FaCreditCard className="mr-2 " size={30} color={"red"} /> 100% FREE
         </p>

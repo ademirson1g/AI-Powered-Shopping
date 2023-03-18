@@ -6,7 +6,7 @@ import { signInWithGithub, signInWithGoogle } from "../firebaseConfig/firebaseCo
 
 const RegisterIcons = () => {
   return (
-    <div className="mt-6 grid grid-cols-3 gap-3">
+    <div className="mt-10 grid grid-cols-3 gap-3 ">
       <div>
         <a
           onClick={signInWithGoogle}

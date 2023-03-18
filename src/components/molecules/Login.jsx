@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import axios from "axios"
 
+
+import { auth } from "../firebaseConfig/firebaseConfig"
 import Navigation from "./Navigation"
 import TransparentButton from "../atoms/TransparentButton"
 import InputField from "../atoms/InputField"
@@ -21,20 +22,26 @@ const LoginPage = () => {
     e.preventDefault()
     const { email, password } = formData
     try {
-      await axios.post("/api/login", {
-        email,
-        password,
-      })
+      const { user } = await auth.signInWithEmailAndPassword(email, password)
+      if (!user.emailVerified) {
+        throw new Error("Please verify your email to log in.")
+      }
       alert("Login successful")
+      setFormData({
+        email: "",
+        password: "",
+      })
+      // Use libary for toast notifications
+      window.location.href = '/dashboard'
     } catch (error) {
-      alert("Error logging in")
+      alert(error.message)
     }
   }
 
   return (
     <>
       <Navigation />
-      <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#5F4B8BFF]">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
             Log In

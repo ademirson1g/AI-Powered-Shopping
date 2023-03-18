@@ -1,4 +1,5 @@
 import React from "react"
+import LoadingIndicator from "../atoms/LoadingIndicator"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
 
@@ -6,7 +7,7 @@ const withAuth = (Component) => {
   class AuthenticatedComponent extends React.Component {
     state = {
       user: null,
-      loading: true
+      loading: true,
     }
 
     componentDidMount() {
@@ -17,7 +18,7 @@ const withAuth = (Component) => {
               name: user.displayName,
               photoUrl: user.photoURL,
             },
-            loading: false
+            loading: false,
           })
         } else {
           this.setState({ user: null, loading: false })
@@ -33,7 +34,7 @@ const withAuth = (Component) => {
       const { user, loading } = this.state
 
       if (loading) {
-        return <div>Loading...</div>
+        return <LoadingIndicator />
       }
 
       return user ? <Component user={user} /> : null

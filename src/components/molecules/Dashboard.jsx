@@ -1,19 +1,11 @@
 import React from "react"
 
 import withAuth from "../hoc/withAuth"
-import Navigation from "./Navigation"
 
 const Dashboard = (props) => {
   const { user } = props
 
-  return (
-    <>
-      <Navigation />
-      {user && (
-        <h1 className="text-white text-center">Welcome to the dashboard</h1>
-      )}
-    </>
-  )
+  return <div className="bg-[#4538A1]">{user && <div>Test</div>}</div>
 }
 
 export default withAuth(Dashboard)
