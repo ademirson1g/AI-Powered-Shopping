@@ -4,10 +4,11 @@ import AppRoutes from "../routes/routes"
 
 const Combined = () => {
   return (
-    <div className="animated">
+    <div>
       <AppRoutes />
     </div>
   )
 }
+
 
 export default Combined

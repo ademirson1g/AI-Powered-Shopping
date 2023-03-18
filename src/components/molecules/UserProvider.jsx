@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AiFillDownCircle } from "react-icons/ai"
 import { BiLogOut } from "react-icons/bi"
+import { FiUser, FiSettings } from "react-icons/fi"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
 import JoinUsButton from "../atoms/JoinUsButton"
@@ -38,7 +39,7 @@ const UserProvider = () => {
 
   return (
     <div className="relative">
-      { user ? (
+      {user ? (
         <div className="flex items-center">
           <button className="flex items-center" onClick={toggleLogoutDropdown}>
             <img
@@ -51,18 +52,27 @@ const UserProvider = () => {
           </button>
           {showLogoutDropdown && (
             <div className="absolute right-0 top-10 bg-white rounded-lg shadow-md py-2 z-10">
-              <Link to="/">
-                <button
-                  onClick={handleLogout}
-                  className="block text-black text-left px-4 py-2"
-                >
-                  <div className="bg-white">
-                    <BiLogOut className="inline-block mr-2 bg-white mb-1" />
-                    Logout
-                  </div>
-                </button>
+              <Link
+                to="/dashboard"
+                className="block text-black text-left px-4 py-2 bg-white"
+              >
+                <div className="flex bg-white">
+                  <FiUser className="inline-block mr-2 bg-white mt-1" />
+                  Dashboard
+                </div>
               </Link>
-            </div>
+                <Link to="/">
+                  <button
+                    onClick={handleLogout}
+                    className="block text-black text-left px-4 py-2"
+                  >
+                    <div className="bg-white">
+                      <BiLogOut className="inline-block mr-2 bg-white mb-1" />
+                      Logout
+                    </div>
+                  </button>
+                </Link>
+              </div>
           )}
         </div>
       ) : (
