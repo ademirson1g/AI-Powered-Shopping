@@ -5,6 +5,15 @@ const MarketSection = styled.section`
   padding: 2rem;
   justify-content: space-between;
   height: 100%;
+  .title {
+    h1 {
+      span {
+        color: #ffc107;
+        font-family: "Permanent Marker", cursive;
+        letter-spacing: 0.2rem;
+      }
+    }
+  }
   .search {
     background-color: #212121;
     display: flex;

@@ -19,6 +19,14 @@ const Markets = (props) => {
               <BiSearch className="text-white mr-2" />
               <input type="text" placeholder="Search For Markets" />
             </div>
+            <div className="title">
+              <h1 className="text-center text-4xl mt-10">
+                <span className="italic">Markets</span>
+              </h1>
+              <div className="line bg-white mt-4 w-full">
+                <hr />
+              </div>
+            </div>
             <MarketCard />
           </MarketSection>
         </div>

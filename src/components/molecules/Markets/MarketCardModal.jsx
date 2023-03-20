@@ -1,6 +1,7 @@
 import React from "react";
-import TransparentButton from "../../atoms/TransparentButton";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
+import TransparentButton from "../../atoms/TransparentButton";
 const MarketCardModal = ({ isOpen, handleCloseModal }) => {
   if (!isOpen) {
     return null;
@@ -56,9 +57,7 @@ const MarketCardModal = ({ isOpen, handleCloseModal }) => {
             className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
             onClick={handleCloseModal}
           >
-            <TransparentButton className="mt-3 w-full sm:mt-0 sm:w-auto sm:text-sm">
-              Close
-            </TransparentButton>
+            <AiOutlineCloseCircle size={30} className="cursor-pointer" />
           </div>
         </div>
       </div>

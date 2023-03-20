@@ -16,6 +16,7 @@ const withAuth = (Component) => {
         if (user) {
           this.setState({
             user: {
+              uid: user?.uid,
               name: user?.displayName,
               photoUrl: user?.photoURL || null,
             },

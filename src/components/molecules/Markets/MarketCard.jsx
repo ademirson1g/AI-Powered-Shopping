@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import LazyLoad from "../../atoms/LazyLoad";
 import TransparentButton from "../../atoms/TransparentButton";
 import MarketCardModal from "./MarketCardModal";
 
@@ -17,11 +19,7 @@ const MarketCard = () => {
       <div className="flex flex-wrap justify-center">
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
           <div className="bg-gray-700">
-            <img
-              className="w-full h-48 object-cover"
-              src="https://picsum.photos/400/300"
-              alt="Card Image"
-            />
+          <LazyLoad src="https://picsum.photos/400/300" alt="Card Image" />
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2 text-center">
                 Card Title
@@ -31,8 +29,8 @@ const MarketCard = () => {
                 viverra sagittis sapien, nec bibendum ipsum fringilla vel.
               </p>
             </div>
-            <div className="px-6 py-4 text-center" onClick={handleOpenModal}>
-              <TransparentButton >
+            <div className="px-6 py-4 text-center" >
+              <TransparentButton onClick={handleOpenModal}>
                 <h1 className="text-black ">Check Out the Market</h1>
               </TransparentButton>
             </div>
@@ -40,11 +38,7 @@ const MarketCard = () => {
         </div>
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
           <div className="bg-gray-700">
-            <img
-              className="w-full h-48 object-cover"
-              src="https://picsum.photos/400/300"
-              alt="Card Image"
-            />
+          <LazyLoad src="https://picsum.photos/400/300" alt="Card Image" />
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2 text-center">
                 Card Title
@@ -54,8 +48,8 @@ const MarketCard = () => {
                 viverra sagittis sapien, nec bibendum ipsum fringilla vel.
               </p>
             </div>
-            <div className="px-6 py-4 text-center" onClick={handleOpenModal}>
-              <TransparentButton>
+            <div className="px-6 py-4 text-center" >
+              <TransparentButton onClick={handleOpenModal}>
                 <h1 className="text-black">Check Out the Market </h1>
               </TransparentButton>
             </div>
@@ -63,11 +57,7 @@ const MarketCard = () => {
         </div>
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
           <div className="bg-gray-700">
-            <img
-              className="w-full h-48 object-cover"
-              src="https://picsum.photos/400/300"
-              alt="Card Image"
-            />
+          <LazyLoad src="https://picsum.photos/400/300" alt="Card Image" />
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2 text-center">
                 Card Title
@@ -77,8 +67,8 @@ const MarketCard = () => {
                 viverra sagittis sapien, nec bibendum ipsum fringilla vel.
               </p>
             </div>
-            <div className="px-6 py-4 text-center" onClick={handleOpenModal}>
-              <TransparentButton>
+            <div className="px-6 py-4 text-center" >
+              <TransparentButton onClick={handleOpenModal}>
                 <h1 className="text-black ">Check Out the Market</h1>
               </TransparentButton>
             </div>
