@@ -2,6 +2,7 @@ import React from "react"
 import LoadingIndicator from "../atoms/LoadingIndicator"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
+import logo from '../../assets/images/logo.png'
 
 const withAuth = (Component) => {
   class AuthenticatedComponent extends React.Component {
@@ -15,8 +16,8 @@ const withAuth = (Component) => {
         if (user) {
           this.setState({
             user: {
-              name: user.displayName,
-              photoUrl: user.photoURL,
+              name: user?.displayName,
+              photoUrl: user?.photoURL || null,
             },
             loading: false,
           })
@@ -37,7 +38,9 @@ const withAuth = (Component) => {
         return <LoadingIndicator />
       }
 
-      return user ? <Component user={user} /> : null
+      const photoUrl = user?.photoUrl ?? logo;
+
+      return user ? <Component user={{...user, photoUrl}} /> : null
     }
   }
 

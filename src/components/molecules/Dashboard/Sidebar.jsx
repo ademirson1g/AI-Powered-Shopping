@@ -35,8 +35,8 @@ export default function Sidebar() {
 
     sr.reveal(
       `
-          .brand,
-          .links>ul>li:nth-of-type(1),
+      .brand,
+      .links>ul>li:nth-of-type(1),
       .links>ul>li:nth-of-type(2),
       .links>ul>li:nth-of-type(3),
       .links>ul>li:nth-of-type(4),
@@ -46,7 +46,7 @@ export default function Sidebar() {
       `,
       {
         opacity: 0,
-        interval: 150,
+        interval: 50,
       }
     );
   }, []);
@@ -77,28 +77,28 @@ export default function Sidebar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)}
               >
-                <a href="#">
+                <Link to ="/dashboard">
                   <MdSpaceDashboard />
                   <span> Dashboard</span>
-                </a>
+                  </Link>
               </li>
               <li
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
               >
-                <a href="#">
+                <Link to="/markets">
                   <SiCoinmarketcap />
                   <span> Markets</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 3 ? "active" : "none"}
                 onClick={() => setCurrentLink(3)}
               >
-                <a href="#">
+                <Link to="/shopping_list">
                   <AiOutlineUnorderedList />
                   <span> Shopping Lists</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 4 ? "active" : "none"}

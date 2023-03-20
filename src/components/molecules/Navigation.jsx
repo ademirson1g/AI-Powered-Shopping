@@ -56,7 +56,6 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-
       <div className="line bg-white mt-4 w-full">
         <hr />
       </div>

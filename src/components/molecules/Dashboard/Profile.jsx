@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import image from "../../../assets/images/logo.png";
-import { HiOutlineLocationMarker } from "react-icons/hi";
 
-import { cardStyles } from "../../../styles/ReusableStyles";
+import { cardStyles } from "../../../styles/CardStyle";
 import withAuth from "../../hoc/withAuth";
 import TransparentButton from "../../atoms/TransparentButton";
 
 function Profile({ user }) {
   const { name, photoUrl } = user;
-  console.log(name);
+
   return (
     <Section>
       <div className="image">

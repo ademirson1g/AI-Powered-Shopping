@@ -4,7 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { AiFillCalendar } from "react-icons/ai";
 import { MdTimelapse } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
-import { cardStyles } from "../../../styles/ReusableStyles";
+import { cardStyles } from "../../../styles/CardStyle";
 export default function DealsOfToday() {
   const faqs = [
     {
