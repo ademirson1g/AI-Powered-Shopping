@@ -29,9 +29,9 @@ export default function NewsFeed() {
         <h2>News feed</h2>
       </div>
       <div className="transactions">
-        {transactions.map((transaction) => {
+        {transactions.map((transaction, indexTransaction) => {
           return (
-            <div className="transaction">
+            <div className="transaction" key={indexTransaction}>
               <div className="transaction__title">
                 <div className="transaction__title__image">
                   <img src={transaction.image} alt="" />

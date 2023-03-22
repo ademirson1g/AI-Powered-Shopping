@@ -10,7 +10,7 @@ function Profile({ user }) {
 
   return (
     <Section>
-      <div className="image">
+      <div className="image cursor-pointer">
         <img src={photoUrl} alt="" />
       </div>
       <div className="title mt-2">

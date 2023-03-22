@@ -1,4 +1,10 @@
-import { ADD_ITEM, ADD_LIST, LOAD_LISTS, DELETE_LIST } from "./reducerExports";
+import {
+  ADD_ITEM,
+  ADD_LIST,
+  LOAD_LISTS,
+  DELETE_LIST,
+  EDIT_LIST,
+} from "./reducerExports";
 
 export const shoppingreducer = (state = [], action) => {
   switch (action?.type) {
@@ -25,5 +31,18 @@ export const shoppingreducer = (state = [], action) => {
       return action.payload;
     case DELETE_LIST:
       return state.filter((list) => list.id !== action.payload);
+    case EDIT_LIST:
+      return state.map((list) => {
+        if (list.id === action.payload.listId) {
+          return {
+            ...list,
+            title: action.payload.editedTitle,
+            items: action.payload.editedItems,
+          };
+        }
+        return list;
+      });
+    default:
+      return state;
   }
 };

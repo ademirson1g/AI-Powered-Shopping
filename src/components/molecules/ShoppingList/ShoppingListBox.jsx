@@ -14,7 +14,8 @@ const ShoppingListBox = ({
   state,
   handleCreateList,
   setInputValue,
-  showInput
+  showInput,
+  dispatch
 }) => {
   const isCreateButtonDisabled = showInput && listTitle.trim() === "";
 
@@ -29,6 +30,7 @@ const ShoppingListBox = ({
             inputValue={inputValue}
             setInputValue={setInputValue}
             handleAddItem={handleAddItem}
+            dispatch={dispatch}
           />
         ))}
       </div>

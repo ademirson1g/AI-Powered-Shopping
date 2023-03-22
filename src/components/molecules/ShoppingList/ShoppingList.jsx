@@ -7,7 +7,10 @@ import withAuth from "../../hoc/withAuth";
 import Sidebar from "../Dashboard/Sidebar";
 import ShoppingListBox from "./ShoppingListBox";
 import { firestore, COLLECTIONS } from "../../firebaseConfig/firebaseConfig";
-import { createList, fetchLists } from "../../redux/functions/shoppingFunctions";
+import {
+  createList,
+  fetchLists,
+} from "../../redux/functions/shoppingFunctions";
 
 const ShoppingList = (props) => {
   const [inputValue, setInputValue] = useState("");
@@ -16,10 +19,12 @@ const ShoppingList = (props) => {
   const [showInput, setShowInput] = useState(false);
   const { user } = props;
 
+  // Load Data without refresh
   useEffect(() => {
     fetchLists(user.uid)(dispatch);
   }, [user.uid, dispatch]);
 
+  // Add item to list
   const handleAddItem = useCallback(
     async (listId) => {
       try {
@@ -41,6 +46,7 @@ const ShoppingList = (props) => {
     [dispatch, inputValue]
   );
 
+  // Create List
   const handleCreateList = useCallback(async () => {
     if (!showInput) {
       setShowInput(true);
@@ -55,19 +61,12 @@ const ShoppingList = (props) => {
     }
   }, [dispatch, listTitle, showInput, user]);
 
-  // const handleDeleteList = useCallback(async (listId) => {
-  //   try {
-  //     await firestore.collection(COLLECTIONS.LISTS).doc(listId).delete();
-  //     dispatch({ type: "DELETE_LIST", payload: listId });
-  //   } catch (error) {
-  //     console.error("Error deleting list: ", error);
-  //   }
-  // }, [dispatch]);
-
+  // Item input change
   const handleInputChange = useCallback((e) => {
     setInputValue(e.target.value);
   }, []);
 
+  // Title input change
   const handleListTitleChange = useCallback((e) => {
     setListTitle(e.target.value);
   }, []);
@@ -96,6 +95,7 @@ const ShoppingList = (props) => {
               state={state}
               handleCreateList={handleCreateList}
               showInput={showInput}
+              dispatch={dispatch}
             />
           </Section>
         </div>

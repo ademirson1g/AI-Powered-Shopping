@@ -1,4 +1,4 @@
-import { LOAD_LISTS, ADD_ITEM, ADD_LIST } from "../reducers/reducerExports";
+import { LOAD_LISTS, ADD_ITEM, ADD_LIST, EDIT_LIST, DELETE_LIST } from "../reducers/reducerExports";
 
 export const loadLists = (lists) => ({
   type: LOAD_LISTS,
@@ -15,3 +15,12 @@ export const addList = (id, title, items) => ({
   payload: { id, title, items }
 });
 
+export const editList = (listId, editedTitle, editedItems) => ({
+  type: EDIT_LIST,
+  payload: { listId, editedTitle, editedItems }
+});
+
+export const deleteList = (listId) => ({
+  type: DELETE_LIST,
+  payload: listId,
+});

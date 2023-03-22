@@ -14,6 +14,8 @@ import scrollreveal from "scrollreveal";
 import { auth } from "../../firebaseConfig/firebaseConfig";
 import { FiLogOut } from "react-icons/fi";
 import SidebarMobile from "./DashboardMobile/SidebarMobile";
+import { TiMessages } from "react-icons/ti";
+import TransparentButton from "../../atoms/TransparentButton";
 
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(1);
@@ -42,6 +44,7 @@ export default function Sidebar() {
       .links>ul>li:nth-of-type(4),
       .links>ul>li:nth-of-type(5),
       .links>ul>li:nth-of-type(6),
+      .links>ul>li:nth-of-type(7),
       .logout
       `,
       {
@@ -121,6 +124,15 @@ export default function Sidebar() {
               <li
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
+              >
+                <a href="#">
+                  <TiMessages />
+                  <span>Messages</span>
+                </a>
+              </li>
+              <li
+                className={currentLink === 7 ? "active" : "none"}
+                onClick={() => setCurrentLink(7)}
               >
                 <a href="#">
                   <IoSettings />
