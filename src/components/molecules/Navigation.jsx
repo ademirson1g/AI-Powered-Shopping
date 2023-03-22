@@ -35,8 +35,6 @@ const Navigation = () => {
           </div>
           <div className="hidden md:block cursor-pointer mt-3">
             <div className="flex items-center">
-              <FaUser className="text-white mr-6" size={20} />
-              <FaSearch className="text-white mr-6" size={20} />
               <UserProvider />
             </div>
           </div>
@@ -56,7 +54,6 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-
       <div className="line bg-white mt-4 w-full">
         <hr />
       </div>

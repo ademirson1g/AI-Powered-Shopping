@@ -9,8 +9,10 @@ import ForgotPassword from "../molecules/ForgotPassword"
 import GetStarted from "../molecules/GetStarted"
 import Homepage from "../molecules/Homepage"
 import Login from "../molecules/Login"
+import Markets from "../molecules/Markets/Markets"
 import Navigation from "../molecules/Navigation"
 import Registration from "../molecules/Registration"
+import ShoppingList from "../molecules/ShoppingList/ShoppingList"
 
 const AppRoutes = () => {
   return (
@@ -32,6 +34,8 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot_password" element={<ForgotPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/markets" element={<Markets />} />
+        <Route path="/shopping_list" element={<ShoppingList />} />
         <Route
           path="*"
           element={
@@ -40,7 +44,7 @@ const AppRoutes = () => {
                 <div class="max-w-md">
                   <div class="text-5xl font-dark font-bold">404</div>
                   <p class="text-2xl md:text-3xl font-light leading-normal">
-                    Sorry we couldn't find this page.{" "}
+                    Sorry we couldn't find this page.
                   </p>
                   <p class="mb-8">
                     But dont worry, you can find plenty of other things on our

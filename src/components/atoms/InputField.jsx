@@ -1,6 +1,14 @@
-import React from "react"
+import React from "react";
 
-const InputField = ({ label, name, type, required, value, onChange }) => {
+const InputField = ({
+  label,
+  name,
+  type,
+  required,
+  value,
+  onChange,
+  className
+}) => {
   return (
     <div>
       <label htmlFor={name} className="block text-sm font-medium text-white">
@@ -13,13 +21,16 @@ const InputField = ({ label, name, type, required, value, onChange }) => {
           type={type}
           autoComplete="off"
           required={required}
-          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          className={`appearance-none block w-full px-3 py-2 border 
+                    border-gray-300 rounded-md shadow-sm placeholder-gray-400 
+                    focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm
+          ${className}`}
           value={value}
           onChange={onChange}
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InputField
+export default InputField;

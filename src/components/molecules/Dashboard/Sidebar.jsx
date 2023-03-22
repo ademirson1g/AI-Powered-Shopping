@@ -14,6 +14,8 @@ import scrollreveal from "scrollreveal";
 import { auth } from "../../firebaseConfig/firebaseConfig";
 import { FiLogOut } from "react-icons/fi";
 import SidebarMobile from "./DashboardMobile/SidebarMobile";
+import { TiMessages } from "react-icons/ti";
+import TransparentButton from "../../atoms/TransparentButton";
 
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(1);
@@ -35,18 +37,19 @@ export default function Sidebar() {
 
     sr.reveal(
       `
-          .brand,
-          .links>ul>li:nth-of-type(1),
+      .brand,
+      .links>ul>li:nth-of-type(1),
       .links>ul>li:nth-of-type(2),
       .links>ul>li:nth-of-type(3),
       .links>ul>li:nth-of-type(4),
       .links>ul>li:nth-of-type(5),
       .links>ul>li:nth-of-type(6),
+      .links>ul>li:nth-of-type(7),
       .logout
       `,
       {
         opacity: 0,
-        interval: 150,
+        interval: 50,
       }
     );
   }, []);
@@ -77,28 +80,28 @@ export default function Sidebar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)}
               >
-                <a href="#">
+                <Link to ="/dashboard">
                   <MdSpaceDashboard />
                   <span> Dashboard</span>
-                </a>
+                  </Link>
               </li>
               <li
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
               >
-                <a href="#">
+                <Link to="/markets">
                   <SiCoinmarketcap />
                   <span> Markets</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 3 ? "active" : "none"}
                 onClick={() => setCurrentLink(3)}
               >
-                <a href="#">
+                <Link to="/shopping_list">
                   <AiOutlineUnorderedList />
                   <span> Shopping Lists</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 4 ? "active" : "none"}
@@ -121,6 +124,15 @@ export default function Sidebar() {
               <li
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
+              >
+                <a href="#">
+                  <TiMessages />
+                  <span>Messages</span>
+                </a>
+              </li>
+              <li
+                className={currentLink === 7 ? "active" : "none"}
+                onClick={() => setCurrentLink(7)}
               >
                 <a href="#">
                   <IoSettings />

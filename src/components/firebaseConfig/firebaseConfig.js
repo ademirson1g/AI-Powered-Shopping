@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -15,6 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 export const auth = firebase.auth()
+export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider()
 provider.setCustomParameters({ prompt: "select_account" })
@@ -32,3 +34,8 @@ export const signInWithGithub = () => {
     window.location.href = "/dashboard"
   })
 }
+
+export const COLLECTIONS = {
+  LISTS: 'shoppingLists'
+};
+

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AreaChart, Area, Tooltip, ResponsiveContainer } from "recharts";
-import { cardStyles } from "../../../styles/ReusableStyles";
+import { cardStyles } from "../../../styles/CardStyle";
 const data = [
   { data: 4500 },
   {

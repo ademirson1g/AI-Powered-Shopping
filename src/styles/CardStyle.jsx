@@ -6,3 +6,4 @@ export const cardStyles = css`
   background-color: #212121;
   color: white;
 `;
+

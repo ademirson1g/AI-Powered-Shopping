@@ -4,7 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { AiFillCalendar } from "react-icons/ai";
 import { MdTimelapse } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
-import { cardStyles } from "../../../styles/ReusableStyles";
+import { cardStyles } from "../../../styles/CardStyle";
 export default function DealsOfToday() {
   const faqs = [
     {
@@ -26,9 +26,9 @@ export default function DealsOfToday() {
         <h2>Top Deals of Today</h2>
       </div>
       <div className="faqs">
-        {faqs.map((faq) => {
+        {faqs.map((faq, indexFaq) => {
           return (
-            <div className="faq">
+            <div className="faq" key={indexFaq}>
               <div className="info">
                 {faq.icon}
                 <h4>{faq.text}</h4>

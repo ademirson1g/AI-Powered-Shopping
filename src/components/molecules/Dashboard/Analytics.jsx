@@ -1,14 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 import { BsFillCalendar2WeekFill } from "react-icons/bs";
 import { IoStatsChart } from "react-icons/io5";
 import { BiGroup } from "react-icons/bi";
 import { FiActivity } from "react-icons/fi";
-import { cardStyles } from "../../../styles/ReusableStyles";
 
-export default function Analytics() {
+import { AnalyticSection } from "../../../styles/AnalyticSection";
+
+const Analytics = () => {
   return (
-    <Section>
+    <AnalyticSection>
       <div className="analytic ">
         <div className="content">
           <h5>Saved this month</h5>
@@ -25,7 +25,9 @@ export default function Analytics() {
         </div>
         <div className="content">
           <h5 className="text-center">Money Left</h5>
-          <p className="text-sm text-center italic">Based on Budget Analytics</p>
+          <p className="text-sm text-center italic">
+            Based on Budget Analytics
+          </p>
           <h2 className="mt-1 font-bold text-center">$350.40</h2>
         </div>
       </div>
@@ -47,48 +49,8 @@ export default function Analytics() {
           <FiActivity />
         </div>
       </div>
-    </Section>
+    </AnalyticSection>
   );
-}
-const Section = styled.section`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  .analytic {
-    ${cardStyles};
-    padding: 1rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 1rem;
-    transition: 0.5s ease-in-out;
-    &:hover {
-      background-color: #ffc107;
-      color: black;
-      svg {
-        color: white;
-      }
-    }
-    .logo {
-      background-color: black;
-      border-radius: 3rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-      svg {
-        font-size: 1.5rem;
-      }
-    }
-  }
+};
 
-  @media screen and (min-width: 280px) and (max-width: 720px) {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    .analytic {
-      &:nth-of-type(3),
-      &:nth-of-type(4) {
-        flex-direction: row-reverse;
-      }
-    }
-  }
-`;
+export default Analytics;
