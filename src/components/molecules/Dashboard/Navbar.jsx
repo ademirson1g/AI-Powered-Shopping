@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { BiSearch } from "react-icons/bi";
 
 import withAuth from "../../hoc/withAuth";
 
@@ -19,33 +18,6 @@ function Navbar({ user }) {
       <h1>
         <span className="italic">Budget Wizzard Dashboard</span>
       </h1>
-    </div>
-    <div className="location flex-col sm:flex-row items-center mt-2 sm:mt-0">
-      <span className="text-white mr-2 mb-4">Please choose your location:</span>
-      <select
-        value={location}
-        onChange={handleLocationChange}
-        className="rounded text-black mb-4"
-      >
-        <option value="">Select location</option>
-        <option value="New York">Bosnia and Herzegovina</option>
-        <option value="Los Angeles">Los Angeles</option>
-        <option value="Chicago">Chicago</option>
-        <option value="Houston">Houston</option>
-        <option value="Philadelphia">Philadelphia</option>
-        <option value="Phoenix">Phoenix</option>
-        <option value="San Antonio">San Antonio</option>
-        <option value="San Diego">San Diego</option>
-        <option value="Dallas">Dallas</option>
-        <option value="San Jose">San Jose</option>
-      </select>
-    </div>
-    <div className="search">
-      <BiSearch className="text-white mr-2" />
-      <input
-        type="text"
-        placeholder="Search"
-      />
     </div>
   </Nav>
   );

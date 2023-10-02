@@ -44,7 +44,7 @@ const SidebarMobile = ({ResponsiveNav, navbarState, currentLink, setCurrentLink,
         >
           <a href="#">
             <MdAnalytics color="white"  />
-            <span>Budget Analytics</span>
+            <span>Budget Tracker</span>
           </a>
         </li>
         <li

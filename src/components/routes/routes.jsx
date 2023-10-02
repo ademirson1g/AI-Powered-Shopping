@@ -13,6 +13,10 @@ import Markets from "../molecules/Markets/Markets"
 import Navigation from "../molecules/Navigation"
 import Registration from "../molecules/Registration"
 import ShoppingList from "../molecules/ShoppingList/ShoppingList"
+import ChatComponent from "../molecules/Messages/ChatMessage"
+import Category from "../molecules/BudgetAnalytics/Category"
+import Deals from "../molecules/Deals/Deals"
+import Settings from "../molecules/Settings/Settings"
 
 const AppRoutes = () => {
   return (
@@ -36,6 +40,10 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/markets" element={<Markets />} />
         <Route path="/shopping_list" element={<ShoppingList />} />
+        <Route path="/messages" element={<ChatComponent />} />
+        <Route path="/budget_analytics" element={<Category />} />
+        <Route path="/deals" element={<Deals />} />
+        <Route path="/settings" element={<Settings />} />
         <Route
           path="*"
           element={

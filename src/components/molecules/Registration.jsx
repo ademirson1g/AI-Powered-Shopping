@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import axios from "axios"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
 import Navigation from "./Navigation"
@@ -117,11 +116,6 @@ const RegistrationPage = () => {
                     </strong>
                   </Link>
                 </h1>
-                <Link to="/forgot_password">
-                  <h1 className="cursor-pointer font-bold hover:text-white">
-                    Forgot your password?
-                  </h1>
-                </Link>
               </div>
             </form>
             <div className="mt-6">

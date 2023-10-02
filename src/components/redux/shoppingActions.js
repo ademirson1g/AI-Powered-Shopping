@@ -1,6 +1,6 @@
 import { LOAD_LISTS, ADD_ITEM, ADD_LIST, EDIT_LIST, DELETE_LIST } from "../reducers/reducerExports";
 
-export const loadLists = (lists) => ({
+export const loadLists = (lists, totalLists) => ({
   type: LOAD_LISTS,
   payload: lists
 });

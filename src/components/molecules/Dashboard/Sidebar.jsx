@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { MdSpaceDashboard } from "react-icons/md";
 import { SiCoinmarketcap } from "react-icons/si";
-import {AiOutlineUnorderedList} from 'react-icons/ai' 
+import { AiOutlineUnorderedList } from 'react-icons/ai'
 import { FaMoneyBill } from "react-icons/fa";
-import {MdAnalytics, MdDiscount} from 'react-icons/md'
+import { MdAnalytics, MdDiscount } from 'react-icons/md'
 import { IoSettings } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
-import scrollreveal from "scrollreveal";
 
 import { auth } from "../../firebaseConfig/firebaseConfig";
 import { FiLogOut } from "react-icons/fi";
 import SidebarMobile from "./DashboardMobile/SidebarMobile";
 import { TiMessages } from "react-icons/ti";
-import TransparentButton from "../../atoms/TransparentButton";
 
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
+
+  const location = useLocation();
+
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
 
@@ -28,31 +29,32 @@ export default function Sidebar() {
   };
 
   useEffect(() => {
-    const sr = scrollreveal({
-      origin: "left",
-      distance: "80px",
-      duration: 500,
-      reset: false,
-    });
-
-    sr.reveal(
-      `
-      .brand,
-      .links>ul>li:nth-of-type(1),
-      .links>ul>li:nth-of-type(2),
-      .links>ul>li:nth-of-type(3),
-      .links>ul>li:nth-of-type(4),
-      .links>ul>li:nth-of-type(5),
-      .links>ul>li:nth-of-type(6),
-      .links>ul>li:nth-of-type(7),
-      .logout
-      `,
-      {
-        opacity: 0,
-        interval: 50,
-      }
-    );
-  }, []);
+    switch (location.pathname) {
+      case "/dashboard":
+        setCurrentLink(1);
+        break;
+      case "/markets":
+        setCurrentLink(2);
+        break;
+      case "/shopping_list":
+        setCurrentLink(3);
+        break;
+      case "/budget_analytics":
+        setCurrentLink(4);
+        break;
+      case "/deals":
+        setCurrentLink(5);
+        break;
+      case "/messages":
+        setCurrentLink(6);
+        break;
+      case "/settings":
+        setCurrentLink(7);
+        break;
+      default:
+        setCurrentLink(null);
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -80,10 +82,10 @@ export default function Sidebar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)}
               >
-                <Link to ="/dashboard">
+                <Link to="/dashboard">
                   <MdSpaceDashboard />
                   <span> Dashboard</span>
-                  </Link>
+                </Link>
               </li>
               <li
                 className={currentLink === 2 ? "active" : "none"}
@@ -107,37 +109,38 @@ export default function Sidebar() {
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
               >
-                <a href="#">
+                <Link to="/budget_analytics">
                   <MdAnalytics color="white" />
-                  <span> Budget Analytics</span>
-                </a>
+                  <span> Budget Tracker</span>
+                </Link>
               </li>
               <li
                 className={currentLink === 5 ? "active" : "none"}
                 onClick={() => setCurrentLink(5)}
               >
-                <a href="#">
+                <Link to="/deals">
                   <MdDiscount />
                   <span> Deals</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
               >
-                <a href="#">
+                <Link to="/messages">
                   <TiMessages />
                   <span>Messages</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 7 ? "active" : "none"}
                 onClick={() => setCurrentLink(7)}
               >
-                <a href="#">
+                <Link to="/settings">
                   <IoSettings />
                   <span>Settings</span>
-                </a>
+                </Link>
+
               </li>
             </ul>
           </div>

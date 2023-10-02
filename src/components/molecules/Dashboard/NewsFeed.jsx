@@ -1,52 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { HiArrowNarrowRight } from "react-icons/hi";
 
-import avatarImage from "../../../assets/images/logo.png";
 import { cardStyles } from "../../../styles/CardStyle";
+import { Link } from "react-router-dom";
 
 export default function NewsFeed() {
-  const transactions = [
-    {
-      image: avatarImage,
-      name: "Mercator catalog for today",
-      time: "Today, 16:36"
-    },
-    {
-      image: avatarImage,
-      name: "Starbucks about to go bankrupt",
-      time: "Today, 08:49"
-    },
-    {
-      image: avatarImage,
-      name: "See what's popular today at Tesco",
-      time: "Yesterday, 14:36"
-    },
-  ];
+  const [items, setItems] = useState([]);
+  const [visibleItems, setVisibleItems] = useState(3);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/deals')
+        .then(response => response.json())
+        .then(data => setItems(data))
+        .catch(error => alert('Error fetching data:', error));
+}, []);
+  
   return (
     <Section>
       <div className="title">
         <h2>News feed</h2>
       </div>
       <div className="transactions">
-        {transactions.map((transaction, indexTransaction) => {
-          return (
-            <div className="transaction" key={indexTransaction}>
+      {items.slice(0, visibleItems).map(item => (
+            <div className="transaction">
               <div className="transaction__title">
                 <div className="transaction__title__image">
-                  <img src={transaction.image} alt="" />
+                  <img src={item.image} alt="" />
                 </div>
                 <div className="transaction__title__details">
-                  <h3>{transaction.name}</h3>
-                  <h5 className="italic">{transaction.time}</h5>
+                  <h3>Marketplace Name : {item.market_name}</h3>
+                  <h5 className="italic">Item : {item.lowest_item}</h5>
+                  <h5 className="italic">Price of Today : {item.lowest_price}€</h5>
                 </div>
               </div>
             </div>
-          );
-        })}
+       ))}
       </div>
       <a className="view" href="#">
-        View all <HiArrowNarrowRight />
+        <Link to="/deals">View all </Link>
       </a>
     </Section>
   );

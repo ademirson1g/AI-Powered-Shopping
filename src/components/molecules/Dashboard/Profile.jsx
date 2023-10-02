@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import { cardStyles } from "../../../styles/CardStyle";
 import withAuth from "../../hoc/withAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import TransparentButton from "../../atoms/TransparentButton";
 
 function Profile({ user }) {
+  const dispatch = useDispatch()
   const { name, photoUrl } = user;
 
   return (
@@ -16,23 +19,11 @@ function Profile({ user }) {
       <div className="title mt-2">
         <h2>{name}</h2>
       </div>
-      <div className="info">
-        <div className="container">
-          <h5 className="italic">Deals catched</h5>
-          <h3 className="mt-2 font-bold">28</h3>
-        </div>
-        <div className="container">
-          <h5 className="italic">Shopping Lists made</h5>
-          <h3 className="mt-2 font-bold">427</h3>
-        </div>
-        <div className="container">
-          <h5 className="italic">Markets </h5>
-          <h3 className="mt-2 font-bold">76</h3>
-        </div>
-      </div>
-      <TransparentButton>
-        <h2 className="text-black"> Check out Todays Deals</h2>
-      </TransparentButton>
+      <Link to ="/settings">
+        <TransparentButton>
+          Edit your Profile
+        </TransparentButton>
+      </Link>
     </Section>
   );
 }

@@ -2,8 +2,9 @@ import React from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import TransparentButton from "../../atoms/TransparentButton";
-const MarketCardModal = ({ isOpen, handleCloseModal }) => {
-  if (!isOpen) {
+
+const MarketCardModal = ({ isOpen, handleCloseModal, selectedMall }) => {
+  if (!isOpen || !selectedMall) {
     return null;
   }
 
@@ -38,20 +39,20 @@ const MarketCardModal = ({ isOpen, handleCloseModal }) => {
             </h3>
             <div className="mt-2">
               <p className="text-sm">
-                <strong className="text-black mr-2">Location :</strong> 1234
-                Main Street, New York, NY 10001
+                <strong className="text-black mr-2">Location :</strong>
+                {selectedMall.location}
               </p>
               <p className="text-sm">
-                <strong className="text-black mr-2">Opening Hours :</strong> 9am
-                - 5pm
+                <strong className="text-black mr-2">Opening Hours :</strong>
+                {selectedMall.openingHours}
               </p>
               <p className="text-sm">
-                <strong className="text-black mr-2">Website :</strong> konzum.hr
+                <strong className="text-black mr-2">Website :</strong>
+                <a href={selectedMall.website} target="_blank" rel="noopener noreferrer">
+                  {selectedMall.website}
+                </a>
               </p>
             </div>
-          </div>
-          <div className="text-center">
-            <TransparentButton>Daily Catalogue</TransparentButton>
           </div>
           <div
             className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"

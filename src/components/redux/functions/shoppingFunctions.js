@@ -8,7 +8,8 @@ import { loadLists, addList, addItem, editList, deleteList } from "../shoppingAc
 export const fetchLists = (userId) => async (dispatch) => {
   try {
     const lists = await fetchUserShoppingLists(userId);
-    dispatch(loadLists(lists));
+    const totalLists = lists.length; 
+    dispatch(loadLists(lists, totalLists));
   } catch (error) {
     console.error("Error fetching lists: ", error);
   }
@@ -22,7 +23,6 @@ export const createList = (userId, listTitle) => async (dispatch) => {
     console.error("Error creating list: ", error);
   }
 };
-
 
 export const editListTitleAndItems = (listId, editedTitle, editedItems) => async (dispatch) => {
   try {

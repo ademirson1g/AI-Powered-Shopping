@@ -5,6 +5,7 @@ import { AiFillCalendar } from "react-icons/ai";
 import { MdTimelapse } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
 import { cardStyles } from "../../../styles/CardStyle";
+import { Link } from "react-router-dom";
 export default function DealsOfToday() {
   const faqs = [
     {
@@ -21,13 +22,15 @@ export default function DealsOfToday() {
     },
   ];
   return (
+    <div style={{width:"1500px"}}>
     <Section>
-      <div className="title">
+      <div className="title text-center">
         <h2>Top Deals of Today</h2>
       </div>
       <div className="faqs">
         {faqs.map((faq, indexFaq) => {
           return (
+            <Link to="/deals">
             <div className="faq" key={indexFaq}>
               <div className="info">
                 {faq.icon}
@@ -35,10 +38,12 @@ export default function DealsOfToday() {
               </div>
               <IoIosArrowForward />
             </div>
+            </Link>
           );
         })}
       </div>
     </Section>
+    </div>
   );
 }
 const Section = styled.section`

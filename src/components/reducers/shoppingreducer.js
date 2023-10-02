@@ -6,7 +6,12 @@ import {
   EDIT_LIST,
 } from "./reducerExports";
 
-export const shoppingreducer = (state = [], action) => {
+const initialState = {
+  lists: [],
+  totalLists: 0,
+};
+
+export const shoppingreducer = (state = initialState, action) => {
   switch (action?.type) {
     case ADD_LIST:
       return [
