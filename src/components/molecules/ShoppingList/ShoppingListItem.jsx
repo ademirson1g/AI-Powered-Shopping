@@ -22,6 +22,7 @@ const ShoopingListItem = React.memo(
     handleEditTitle,
     setInputValue,
     dispatch,
+    
   }) => {
     const isCreateButtonDisabled = inputValue.trim() === "";
 
@@ -117,7 +118,7 @@ const ShoopingListItem = React.memo(
     };
 
     if (isDeleted) {
-      return null; // don't render the component if list is deleted
+      return null; 
     }
 
     return (
@@ -248,7 +249,7 @@ ShoopingListItem.propTypes = {
   list: PropTypes.object.isRequired,
   inputValue: PropTypes.string.isRequired,
   handleAddItem: PropTypes.func.isRequired,
-  handleEditTitle: PropTypes.func.isRequired,
+  handleEditTitle: PropTypes.func,
 };
 
 export default ShoopingListItem;

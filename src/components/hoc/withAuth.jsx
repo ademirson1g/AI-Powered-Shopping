@@ -1,7 +1,7 @@
 import React from "react"
-import LoadingIndicator from "../atoms/LoadingIndicator"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
+import LoadingIndicator from "../atoms/LoadingIndicator"
 import logo from '../../assets/images/logo.png'
 
 const withAuth = (Component) => {
@@ -18,7 +18,7 @@ const withAuth = (Component) => {
             user: {
               uid: user?.uid,
               name: user?.displayName,
-              photoUrl: user?.photoURL || null,
+              photoUrl: user?.photoURL || null
             },
             loading: false,
           })
@@ -41,7 +41,7 @@ const withAuth = (Component) => {
 
       const photoUrl = user?.photoUrl ?? logo;
 
-      return user ? <Component user={{...user, photoUrl}} /> : null
+      return user ? <Component user={{ ...user, photoUrl }} /> : null
     }
   }
 

@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 
-import Analytics from "./Analytics";
 import MonthSavingDashboard from "./MonthSavingDashboard";
 import DealsOfToday from "./DealsOfToday";
 import Navbar from "./Navbar";
@@ -44,7 +42,6 @@ const Dashboard = (props) => {
             <Navbar />
             <div className="grid">
               <div className="row__one">
-                <Analytics />
                 <DealsOfToday />
               </div>
               <div className="row__two">
