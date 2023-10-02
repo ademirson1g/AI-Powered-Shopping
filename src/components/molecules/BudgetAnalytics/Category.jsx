@@ -5,7 +5,7 @@ import "firebase/compat/firestore";
 import firebase from "firebase/compat/app"
 
 const Category = () => {
-    const [budgetGoal, setBudgetGoal] = useState(1);
+    const [budgetGoal, setBudgetGoal] = useState();
     const [expenses, setExpenses] = useState([]);
     const user = firebase.auth().currentUser;
 
@@ -13,43 +13,53 @@ const Category = () => {
     const progress = (totalExpenses / budgetGoal) * 100;
 
     const addExpense = (name, amount, budgetGoal) => {
-        const newExpense = { name, amount, userId: user.uid, budgetGoal };
-        setExpenses([...expenses, newExpense]);
-
-        firebase.firestore().collection('expenses').add(newExpense)
-            .then(() => {
-                console.log('Expense added to Firestore');
-            })
-            .catch((error) => {
-                console.error('Error adding expense to Firestore:', error);
-            });
+        const newExpense = { name, amount };
+        
+        // Check if budgetGoal is a valid number before adding it to newExpense
+        if (!isNaN(budgetGoal)) {
+            newExpense.budgetGoal = parseFloat(budgetGoal);
+        }
+    
+        setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
+    
+        // Check if budgetGoal is a valid number before saving to Firestore
+        if (!isNaN(budgetGoal)) {
+            firebase.firestore().collection('expenses').add(newExpense)
+                .then(() => {
+                    console.log('Expense added to Firestore');
+                })
+                .catch((error) => {
+                    console.error('Error adding expense to Firestore:', error);
+                });
+        } else {
+            console.error('Invalid budgetGoal value. Expense not saved to Firestore.');
+        }
     };
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                if (user) {
-                    // Fetch budget goal from Firestore
-                    const userDoc = await firebase.firestore().collection('users').doc(user.uid).get();
-                    const userData = userDoc.data();
-                    
-                    if (userData && userData.budgetGoal) {
-                        setBudgetGoal(userData.budgetGoal);
-                    } else {
-                        // If budget goal doesn't exist in Firestore, set it to the default value
-                        setBudgetGoal(1);
-                    }
-
-                    // Fetch expenses from Firestore
-                    const expensesSnapshot = await firebase.firestore().collection('expenses').where('userId', '==', user.uid).get();
-                    const expensesData = expensesSnapshot.docs.map(doc => doc.data());
+                // Fetch expenses from Firestore
+                const expensesCollection = firebase.firestore().collection('expenses');
+    
+                // Subscribe to real-time updates
+                const unsubscribe = expensesCollection.onSnapshot(snapshot => {
+                    const expensesData = snapshot.docs.map(doc => doc.data());
+    
+                    // Calculate the total budget goal from all expenses
+                    const totalBudgetGoal = expensesData.reduce((total, expense) => total + expense.budgetGoal, 0);
+    
                     setExpenses(expensesData);
-                }
+                    setBudgetGoal(totalBudgetGoal);
+                });
+    
+                // Clean up the subscription when the component unmounts
+                return () => unsubscribe();
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-
+    
         fetchUserData();
     }, [user]);
 
@@ -83,12 +93,16 @@ const Category = () => {
                     <h3 className="text-md font-semibold mb-2">Add Expense and Budget Goal</h3>
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                        addExpense(e.target.name.value, parseFloat(e.target.amount.value));
+                        const nameInput = e.target.name.value;
+                        const amountInput = parseFloat(e.target.amount.value);
+                        const budgetInput = parseFloat(e.target.budget.value); 
+
+                        addExpense(nameInput, amountInput, budgetInput); 
                         e.target.reset();
                     }}>
                         <input type="text" name="name" placeholder="Expense name" className="w-52 p-2 border rounded-md" required />
                         <input type="number" name="amount" placeholder="Amount" className="ml-2 w-52 p-2 border rounded-md" required />
-                        <input type="number" name="budget" placeholder="Enter budget" className="w-52 p-2 border rounded-md ml-2" required />
+                        <input type="number" name="budget" placeholder="Enter budget Goal" className="w-52 p-2 border rounded-md ml-2" />
                         <button type="submit" className="ml-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Add</button>
                     </form>
                 </div>
