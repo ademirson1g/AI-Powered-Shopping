@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import "firebase/compat/firestore";
+import { Link, useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -23,7 +24,6 @@ provider.setCustomParameters({ prompt: "select_account" })
 
 export const signInWithGoogle = () => {
   auth.signInWithPopup(provider).then(() => {
-    window.location.href="/dashboard"
   })
 }
 
