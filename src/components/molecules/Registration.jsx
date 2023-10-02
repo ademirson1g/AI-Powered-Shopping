@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { auth } from "../firebaseConfig/firebaseConfig"
 import Navigation from "./Navigation"
@@ -46,7 +46,6 @@ const RegistrationPage = () => {
         password: "",
         confirmPassword: "",
       })
-      window.location.href = '/login' // redirect to login page
     } catch (error) {
       alert("Error registering")
     }
