@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useReducer, useState } from "react";
 import firebase from "firebase/compat/app";
 
-import { shoppingreducer } from "../../reducers/shoppingreducer";
+import { shoppingreducer } from "../../redux/shoppingreducer";
 import Section from "../../../styles/Section";
 import withAuth from "../../hoc/withAuth";
 import Sidebar from "../Dashboard/Sidebar";
