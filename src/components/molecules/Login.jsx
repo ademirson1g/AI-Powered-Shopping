@@ -31,8 +31,6 @@ const LoginPage = () => {
         email: "",
         password: "",
       })
-      // Use libary for toast notifications
-      window.location.href = '/dashboard'
     } catch (error) {
       alert(error.message)
     }
